@@ -1,0 +1,22 @@
+{
+  "schemaVersion": 1,
+  "id": "lumen",
+  "version": "${version}",
+  "name": "Lumen",
+  "description": "Lumen: ghost-style utility client for anticheat testing on Fabric 1.21.x.",
+  "authors": ["thatboyo"],
+  "contact": {
+    "homepage": "https://github.com/thatboyo/Lumen-Client"
+  },
+  "license": "MIT",
+  "environment": "client",
+  "entrypoints": {
+    "client": ["net.lumen.client.LumenClient"]
+  },
+  "depends": {
+    "fabricloader": ">=0.17.6",
+    "fabric": "*",
+    "minecraft": "1.21.1"
+  },
+  "mixins": ["lumen.mixins"]
+}

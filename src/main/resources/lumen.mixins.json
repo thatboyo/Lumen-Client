@@ -1,0 +1,19 @@
+{
+  "required": true,
+  "package": "net.lumen.client.mixin",
+  "compatibilityLevel": "JAVA_21",
+  "mixins": [
+    "MinecraftClientMixin",
+    "HudMixin",
+    "GameRendererMixin",
+    "ClientPlayNetworkHandlerMixin",
+    "ClientPlayerEntityMixin"
+  ],
+  "client": [
+    "MinecraftClientMixin",
+    "HudMixin",
+    "GameRendererMixin",
+    "ClientPlayNetworkHandlerMixin",
+    "ClientPlayerEntityMixin"
+  ]
+}
