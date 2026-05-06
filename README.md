@@ -19,15 +19,16 @@ The client features minimalistic visuals, hidden mechanics, full modularization 
 
 Drop lumen-client.jar into:
 
-.minecraft/mods/
-Start Minecraft
-🎮 Controls
-Key	Action
-RSHIFT	ClickGUI
-P	ClickHUD (hide HUD + render modules)
+.minecraft/mods/,
+Start Minecraft,
+
+-----------------------
+Default Keybinds are:
+RSHIFT	for ClickGUI
+P	for ClickHUD (hide HUD + render modules),
+also,
 (custom)	Module keybinds are customizable
- Core Systems
-Main Entry
+
 
 LumenClient
 
