@@ -1,10 +1,7 @@
 # Lumen-Client
 A sleek modern Minecraft Ghost Client designed for Fabric 1.21.x
 
-
-Lumen Client
-
-Minimalist ghost style utility client for Minecraft 1.21.x (Fabric)
+==================================================================
 
 Overview
 
@@ -79,7 +76,7 @@ Themes
 
 
 
-
+-----------------------------------------
 Toggle instantly through config:
 
  Ghost (Default)
@@ -99,7 +96,7 @@ Instantly toggle favorite modules between categories
  Combat
 
 
-
+--------------------------------
 Stealthy automation features:
 
 Silent Aura
@@ -110,7 +107,7 @@ AutoClicker
 Crits
 AutoPotion
 Render
-
+-------------------------
 Visual enhancements:
 
 ESP / Tracers / Chams
@@ -120,7 +117,7 @@ BlockESP
 ViewModel
 Movement
 
-
+------------------------------
 
 Movement improvements:
 
@@ -131,7 +128,7 @@ Strafe
 Ghost
 
 
-
+-----------------------------------
 Mirroring + unique stealth features:
 
 Blink
@@ -143,7 +140,7 @@ Ghost Scaffold
 Player (HUD)
 
 
-
+------------------------------
 Customizable HUD elements:
 
 Arraylist
@@ -155,7 +152,7 @@ Armor HUD
 Clock
 Legit
 
- 
+----------------------------------- 
 
 Quality of Life Improvements Only:
 
@@ -167,7 +164,7 @@ Timechanger
 Name Protector
 Options
 
-
+---------------------------
 
 Universal configuration:
 
@@ -192,7 +189,7 @@ Path:
 .minecraft/lumen/
 .minecraft/lumen/profiles/
 
-
+================================
 
 Features:
 
@@ -226,7 +223,7 @@ Guarantees visible movements are legitimate
 Emphasizes timing rather than automation
 
 
-
+----------------------------------------------
 Development Details
 
 Utilizes mixins for event injection points
@@ -237,7 +234,7 @@ Built with extensibility and separation in mind
 
 The watermark feature will be implemented soon, as soon as i can settle on a design:
 
-
+=====================================================================================
 // TODO: 
 *Replace with watermark texture when asset is provided
 *finish the modules
@@ -245,7 +242,7 @@ The watermark feature will be implemented soon, as soon as i can settle on a des
 *find the most optimal chance settings to set to default
 
 
-
+----------------------------------
 ⚠️Disclaimer
 
 Lumen Client is designed for:
