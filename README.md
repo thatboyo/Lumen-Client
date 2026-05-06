@@ -1,12 +1,9 @@
 # Lumen-Client
 A sleek modern Minecraft Ghost Client designed for Fabric 1.21.x
 
+==================================================================
 
-Lumen Client
-
-Minimalist ghost style utility client for Minecraft 1.21.x (Fabric)
-
- Overview
+Overview
 
 Lumen Client is a lightweight, modular Fabric client created for anticheat testing on private servers.
 The client features minimalistic visuals, hidden mechanics, full modularization and a ghost style theme.
@@ -22,15 +19,16 @@ The client features minimalistic visuals, hidden mechanics, full modularization 
 
 Drop lumen-client.jar into:
 
-.minecraft/mods/
-Start Minecraft
-🎮 Controls
-Key	Action
-RSHIFT	ClickGUI
-P	ClickHUD (hide HUD + render modules)
+.minecraft/mods/,
+Start Minecraft,
+
+-----------------------
+Default Keybinds are:
+RSHIFT	for ClickGUI
+P	for ClickHUD (hide HUD + render modules),
+also,
 (custom)	Module keybinds are customizable
- Core Systems
-Main Entry
+
 
 LumenClient
 
@@ -78,6 +76,8 @@ StringSetting
 Themes
 
 
+
+-----------------------------------------
 Toggle instantly through config:
 
  Ghost (Default)
@@ -96,6 +96,8 @@ Modules star by user
 Instantly toggle favorite modules between categories
  Combat
 
+
+--------------------------------
 Stealthy automation features:
 
 Silent Aura
@@ -106,7 +108,7 @@ AutoClicker
 Crits
 AutoPotion
 Render
-
+-------------------------
 Visual enhancements:
 
 ESP / Tracers / Chams
@@ -116,6 +118,8 @@ BlockESP
 ViewModel
 Movement
 
+------------------------------
+
 Movement improvements:
 
 Sprint / Speed / Fly
@@ -124,6 +128,8 @@ Scaffold
 Strafe
 Ghost
 
+
+-----------------------------------
 Mirroring + unique stealth features:
 
 Blink
@@ -134,6 +140,8 @@ MLG Water
 Ghost Scaffold
 Player (HUD)
 
+
+------------------------------
 Customizable HUD elements:
 
 Arraylist
@@ -143,7 +151,9 @@ FPS / Ping
 Keystrokes / CPS
 Armor HUD
 Clock
- Legit
+Legit
+
+----------------------------------- 
 
 Quality of Life Improvements Only:
 
@@ -154,6 +164,8 @@ No Weather
 Timechanger
 Name Protector
 Options
+
+---------------------------
 
 Universal configuration:
 
@@ -177,6 +189,8 @@ Path:
 
 .minecraft/lumen/
 .minecraft/lumen/profiles/
+
+================================
 
 Features:
 
@@ -203,16 +217,15 @@ Render module rendering (3D)
 Settings save upon exit
  Philosophy Behind Lumen
 
-Lumen tries to avoid doing things too obviously:
+Lumen tries to avoid blatant cheating:
 
 Executes in a probabilistic fashion
 Guarantees visible movements are legitimate
 Emphasizes timing rather than automation
 
-also known as:
-Not rage, just "huh, that kinda looked legit..." 💀
 
- Development Details
+----------------------------------------------
+Development Details
 
 Utilizes mixins for event injection points
 Rendering uses Fabric Rendering API
@@ -220,15 +233,24 @@ Configuration uses Gson
 Built with extensibility and separation in mind
  Watermark Placeholder
 
-The watermark feature allows for image use, however, it is currently hardcoded to text rendering:
+The watermark feature will be implemented soon, as soon as i can settle on a design:
 
-// TODO: Replace with watermark texture when asset is provided
-drawText("Lumen v1.0 | 1.21.x");
-⚠️ Disclaimer
+=====================================================================================
+// TODO: 
+*Replace with watermark texture when asset is provided
+*finish the modules
+*playtest the ghost features, 
+*find the most optimal chance settings to set to default
+
+
+----------------------------------
+⚠️Disclaimer
 
 Lumen Client is designed for:
 
-Anticheat testing
-Personal use only
+Quality of Life,
+Ghost Cheating
+AntiCheat Testing
 
-Lumen Client is not intended for server use.
+cranking up the settings to much could get you banned from public server
+use with caution
