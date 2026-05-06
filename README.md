@@ -16,6 +16,10 @@ The client features minimalistic visuals, hidden mechanics, full modularization 
  Installation
  Install Fabric Loader (1.21.x)
  Install Fabric API
+===================================================
+to build the client:
+run ./gradlew build
+------------------------------------
 
 Drop lumen-client.jar into:
 
@@ -27,9 +31,9 @@ Default Keybinds are:
 RSHIFT	for ClickGUI
 P	for ClickHUD (hide HUD + render modules),
 also,
-(custom)	Module keybinds are customizable
+custom	module keybinds are customizable
 
-
+-------------------------------------
 LumenClient
 
 Inits all managers:
