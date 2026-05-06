@@ -44,8 +44,8 @@ public class ZoomModule extends Module {
     }
 
     private void onKey(EventKey event) {
-        if (event.keycode == holdKey.getValue()) {
-            targetFov = event.pressed ? zoomFov.getValue() : defaultFov;
+        if (event.key == holdKey.getValue()) {
+            targetFov = event.action == 1 ? zoomFov.getValue() : defaultFov;
         }
     }
 

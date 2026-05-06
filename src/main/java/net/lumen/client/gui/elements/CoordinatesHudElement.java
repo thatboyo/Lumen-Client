@@ -17,6 +17,6 @@ public class CoordinatesHudElement extends HudElement {
             return;
         }
         String coords = String.format("X: %.1f Y: %.1f Z: %.1f", client.player.getX(), client.player.getY(), client.player.getZ());
-        context.drawTextWithShadow(context.getTextRenderer(), coords, x, y, LumenTheme.active.accent);
+        context.drawTextWithShadow(context.textRenderer, coords, x, y, LumenTheme.active.accent);
     }
 }

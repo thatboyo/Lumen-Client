@@ -54,7 +54,7 @@ public class BlinkModule extends Module {
     }
 
     private void onKey(EventKey event) {
-        if (event.keycode == releaseKey.getValue() && event.pressed) {
+        if (event.key == releaseKey.getValue() && event.action == 1) {
             releasePackets();
             toggle(); // Disable after manual release
         }

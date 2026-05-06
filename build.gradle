@@ -36,7 +36,7 @@ dependencies {
 }
 
 loom {
-    accessWidenerPath = file('src/main/resources/lumen.accesswidener')
+    // accessWidenerPath = file('src/main/resources/lumen.accesswidener')
 }
 
 tasks.withType(JavaCompile).configureEach {

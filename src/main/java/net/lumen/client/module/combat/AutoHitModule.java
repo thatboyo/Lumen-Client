@@ -40,11 +40,11 @@ public class AutoHitModule extends Module {
         }
 
         if (target instanceof PlayerEntity && !targetMobs.getValue()) {
-            if (client.player.getAttackCooldownProgress((float) cooldownThreshold.getValue() / 100.0f) >= 1.0f) {
+            if (client.player.getAttackCooldownProgress((float) (cooldownThreshold.getValue() / 100.0)) >= 1.0f) {
                 client.interactionManager.attackEntity(client.player, target);
             }
         } else if (!targetMobs.getValue()) {
-            if (client.player.getAttackCooldownProgress((float) cooldownThreshold.getValue() / 100.0f) >= 1.0f) {
+            if (client.player.getAttackCooldownProgress((float) (cooldownThreshold.getValue() / 100.0)) >= 1.0f) {
                 client.interactionManager.attackEntity(client.player, target);
             }
         }

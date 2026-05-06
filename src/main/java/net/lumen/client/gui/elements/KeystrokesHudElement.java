@@ -27,9 +27,9 @@ public class KeystrokesHudElement extends HudElement {
         boolean back = InputUtil.isKeyPressed(client.getWindow().getHandle(), InputUtil.fromKeyCode(GLFW.GLFW_KEY_S, 0).getCode());
         boolean right = InputUtil.isKeyPressed(client.getWindow().getHandle(), InputUtil.fromKeyCode(GLFW.GLFW_KEY_D, 0).getCode());
 
-        context.drawTextWithShadow(context.getTextRenderer(), "W", x + 14, y, forward ? activeColor : inactiveColor);
-        context.drawTextWithShadow(context.getTextRenderer(), "A", x, y + 12, left ? activeColor : inactiveColor);
-        context.drawTextWithShadow(context.getTextRenderer(), "S", x + 14, y + 12, back ? activeColor : inactiveColor);
-        context.drawTextWithShadow(context.getTextRenderer(), "D", x + 28, y + 12, right ? activeColor : inactiveColor);
+        context.drawTextWithShadow(context.textRenderer, "W", x + 14, y, forward ? activeColor : inactiveColor);
+        context.drawTextWithShadow(context.textRenderer, "A", x, y + 12, left ? activeColor : inactiveColor);
+        context.drawTextWithShadow(context.textRenderer, "S", x + 14, y + 12, back ? activeColor : inactiveColor);
+        context.drawTextWithShadow(context.textRenderer, "D", x + 28, y + 12, right ? activeColor : inactiveColor);
     }
 }

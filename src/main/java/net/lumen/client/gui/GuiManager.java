@@ -98,7 +98,7 @@ public class GuiManager {
             context.fill(x, y, x + panelWidth, y + panelHeight, LumenClient.getThemeManager().getActiveTheme().panel);
 
             // Category title
-            context.drawTextWithShadow(context.getTextRenderer(), category.name(), x + 5, y + 5, LumenClient.getThemeManager().getActiveTheme().accent);
+            context.drawTextWithShadow(context.textRenderer, category.name(), x + 5, y + 5, LumenClient.getThemeManager().getActiveTheme().accent);
 
             // Modules list (simplified)
             var modules = LumenClient.getModuleManager().getModules(category);
@@ -108,7 +108,7 @@ public class GuiManager {
 
                 // Module name
                 int color = module.isEnabled() ? LumenClient.getThemeManager().getActiveTheme().enabledIndicator : LumenClient.getThemeManager().getActiveTheme().muted;
-                context.drawTextWithShadow(context.getTextRenderer(), module.getName(), x + 5, moduleY, color);
+                context.drawTextWithShadow(context.textRenderer, module.getName(), x + 5, moduleY, color);
 
                 moduleY += 12;
             }
@@ -122,6 +122,6 @@ public class GuiManager {
         int y = 20;
         int background = 0xCC000000;
         context.fill(x, y, x + width, y + height, background);
-        context.drawTextWithShadow(context.getTextRenderer(), "Lumen Sidebar GUI", x + 10, y + 10, LumenClient.getThemeManager().getActiveTheme().accent);
+        context.drawTextWithShadow(context.textRenderer, "Lumen Sidebar GUI", x + 10, y + 10, LumenClient.getThemeManager().getActiveTheme().accent);
     }
 }

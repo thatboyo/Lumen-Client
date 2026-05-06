@@ -71,7 +71,7 @@ public class SilentAuraModule extends Module {
 
         double random = Math.random();
         if (random <= (attackChance.getValue() / 100.0)) {
-            if (client.player.getAttackCooldownProgress((float) cooldownThreshold.getValue() / 100.0f) >= 1.0f) {
+            if (client.player.getAttackCooldownProgress((float) (cooldownThreshold.getValue() / 100.0)) >= 1.0f) {
                 client.interactionManager.attackEntity(client.player, currentTarget);
             }
         }

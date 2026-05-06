@@ -33,6 +33,6 @@ public enum LumenTheme {
 
     public Identifier watermarkAsset() {
         // Placeholder for future watermark image asset.
-        return new Identifier("lumen", "textures/gui/watermark.png");
+        return Identifier.of("lumen", "textures/gui/watermark.png");
     }
 }

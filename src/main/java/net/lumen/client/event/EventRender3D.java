@@ -1,12 +1,12 @@
 package net.lumen.client.event;
 
-import com.mojang.blaze3d.vertex.PoseStack;
+import net.minecraft.client.util.math.MatrixStack;
 
 public class EventRender3D {
-    public final PoseStack matrices;
+    public final MatrixStack matrices;
     public final float tickDelta;
 
-    public EventRender3D(PoseStack matrices, float tickDelta) {
+    public EventRender3D(MatrixStack matrices, float tickDelta) {
         this.matrices = matrices;
         this.tickDelta = tickDelta;
     }

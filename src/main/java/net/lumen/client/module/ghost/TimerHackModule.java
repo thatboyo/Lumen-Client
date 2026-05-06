@@ -34,7 +34,6 @@ public class TimerHackModule extends Module {
         if (random <= (chance.getValue() / 100.0)) {
             double multiplierVal = multiplier.getValue();
             // Adjust the game timer for speed effect
-            client.getTickDelta();
             // In practice, this would modify the internal timer
         }
     }

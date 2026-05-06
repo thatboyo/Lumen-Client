@@ -13,7 +13,7 @@ public class WatermarkHudElement extends HudElement {
     @Override
     public void render(DrawContext context, float tickDelta) {
         int textColor = LumenTheme.active.accent;
-        context.drawTextWithShadow(context.getTextRenderer(), "Lumen v1.0 | 1.21.x", x, y, textColor);
+        context.drawTextWithShadow(context.textRenderer, "Lumen v1.0 | 1.21.x", x, y, textColor);
         // TODO: replace the text render with watermark image asset once provided.
     }
 }

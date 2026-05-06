@@ -21,7 +21,7 @@ public class ArrayListHudElement extends HudElement {
         float currentY = y;
         for (Module module : manager.getEnabled()) {
             int textColor = LumenTheme.active.accent;
-            context.drawTextWithShadow(context.getTextRenderer(), module.getName(), x, currentY, textColor);
+            context.drawTextWithShadow(context.textRenderer, module.getName(), x, currentY, textColor);
             currentY += 10 * scale;
         }
     }

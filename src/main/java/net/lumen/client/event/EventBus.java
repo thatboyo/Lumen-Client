@@ -13,7 +13,7 @@ public class EventBus {
         listeners.computeIfAbsent(eventClass, key -> new ArrayList<>()).add(listener);
     }
 
-    public <T> void unsubscribe(Class<T> eventClass, Consumer<T> listener) {
+    public void unsubscribe(Class<?> eventClass, Consumer<?> listener) {
         List<Consumer<?>> eventListeners = listeners.get(eventClass);
         if (eventListeners != null) {
             eventListeners.remove(listener);
