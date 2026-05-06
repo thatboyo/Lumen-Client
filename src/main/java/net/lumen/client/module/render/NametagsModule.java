@@ -6,9 +6,16 @@ import net.lumen.client.module.Module;
 import net.lumen.client.setting.BooleanSetting;
 import net.lumen.client.setting.SliderSetting;
 import net.minecraft.client.MinecraftClient;
+import net.minecraft.client.font.TextRenderer;
+import net.minecraft.client.render.VertexConsumerProvider;
+import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.text.Text;
+import net.minecraft.util.math.RotationAxis;
+import net.minecraft.util.math.Vec3d;
+import com.mojang.blaze3d.systems.RenderSystem;
 
 public class NametagsModule extends Module {
     private final BooleanSetting showHealth;
@@ -32,9 +39,11 @@ public class NametagsModule extends Module {
 
     private void onRender3D(EventRender3D event) {
         MinecraftClient client = MinecraftClient.getInstance();
-        if (client == null || client.world == null || client.player == null) {
+        if (client == null || client.world == null || client.player == null || client.textRenderer == null) {
             return;
         }
+
+        Vec3d cameraPos = client.gameRenderer.getCamera().getPos();
 
         for (Entity entity : client.world.getEntities()) {
             if (entity == client.player || !(entity instanceof LivingEntity)) {
@@ -62,8 +71,31 @@ public class NametagsModule extends Module {
                 display.append(" ").append(String.format("%.1fm", distance));
             }
 
-            // Rendering would be done here with DrawContext and text renderer
-            // This is a placeholder that would render the display string above the entity
+            // Render the nametag
+            renderNametag(event.matrices, client.textRenderer, display.toString(), entity, cameraPos, scale.getValue());
         }
+    }
+
+    private void renderNametag(MatrixStack matrices, TextRenderer textRenderer, String text, Entity entity, Vec3d cameraPos, double scale) {
+        matrices.push();
+        Vec3d entityPos = entity.getPos().add(0, entity.getHeight() + 0.5, 0);
+        matrices.translate(entityPos.x - cameraPos.x, entityPos.y - cameraPos.y, entityPos.z - cameraPos.z);
+
+        // Rotate to face camera
+        matrices.multiply(RotationAxis.POSITIVE_Y.rotationDegrees(-MinecraftClient.getInstance().gameRenderer.getCamera().getYaw()));
+        matrices.multiply(RotationAxis.POSITIVE_X.rotationDegrees(MinecraftClient.getInstance().gameRenderer.getCamera().getPitch()));
+
+        matrices.scale((float) -scale, (float) -scale, (float) scale);
+
+        // Center the text
+        float x = -textRenderer.getWidth(text) / 2.0f;
+        float y = 0;
+
+        matrices.translate(x, y, 0);
+
+        // Render background or just text
+        textRenderer.draw(text, 0, 0, 0xFFFFFF, false, matrices.peek().getPositionMatrix(), (VertexConsumerProvider.Immediate) MinecraftClient.getInstance().getBufferBuilders().getEntityVertexConsumers(), TextRenderer.TextLayerType.NORMAL, 0, 15728880);
+
+        matrices.pop();
     }
 }

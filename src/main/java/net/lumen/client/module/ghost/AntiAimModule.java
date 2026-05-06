@@ -1,7 +1,5 @@
 package net.lumen.client.module.ghost;
 
-package net.lumen.client.module.ghost;
-
 import net.lumen.client.event.EventMotion;
 import net.lumen.client.module.Category;
 import net.lumen.client.module.Module;
@@ -29,15 +27,13 @@ public class AntiAimModule extends Module {
     }
 
     private void onMotion(EventMotion event) {
-        MinecraftClient client = MinecraftClient.getInstance();
-        if (client == null || client.player == null) {
-            return;
-        }
-
         switch (mode.getValue()) {
-            case STATIC_DOWN -> client.player.setYaw(0);
-            case SPIN -> client.player.setYaw(client.player.getYaw() + 10);
-            case BACKWARDS -> client.player.setYaw(client.player.getYaw() + 180);
+            case STATIC_DOWN -> {
+                event.yaw = 0;
+                event.pitch = 90; // Down
+            }
+            case SPIN -> event.yaw += 10;
+            case BACKWARDS -> event.yaw += 180;
         }
     }
 }

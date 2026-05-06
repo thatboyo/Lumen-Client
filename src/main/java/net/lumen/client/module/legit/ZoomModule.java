@@ -1,15 +1,21 @@
 package net.lumen.client.module.legit;
 
 import net.lumen.client.event.EventKey;
+import net.lumen.client.event.EventTick;
 import net.lumen.client.module.Category;
 import net.lumen.client.module.Module;
 import net.lumen.client.setting.KeybindSetting;
 import net.lumen.client.setting.SliderSetting;
+import net.minecraft.client.MinecraftClient;
 
 public class ZoomModule extends Module {
     private final SliderSetting zoomFov;
     private final SliderSetting smoothness;
     private final KeybindSetting holdKey;
+
+    private double currentFov;
+    private double targetFov;
+    private double defaultFov;
 
     public ZoomModule() {
         super("Zoom", "Reduces FOV while held for a smooth zoom effect.", Category.LEGIT, 0);
@@ -24,9 +30,33 @@ public class ZoomModule extends Module {
     @Override
     protected void onEnable() {
         subscribe(EventKey.class, this::onKey);
+        subscribe(EventTick.class, this::onTick);
+        MinecraftClient client = MinecraftClient.getInstance();
+        defaultFov = client.options.getFov().getValue();
+        currentFov = defaultFov;
+        targetFov = defaultFov;
+    }
+
+    @Override
+    protected void onDisable() {
+        MinecraftClient client = MinecraftClient.getInstance();
+        client.options.getFov().setValue(defaultFov);
     }
 
     private void onKey(EventKey event) {
-        // handle zoom key press and release.
+        if (event.keycode == holdKey.getValue()) {
+            targetFov = event.pressed ? zoomFov.getValue() : defaultFov;
+        }
+    }
+
+    private void onTick(EventTick event) {
+        if (currentFov != targetFov) {
+            double delta = (targetFov - currentFov) / smoothness.getValue();
+            currentFov += delta;
+            if (Math.abs(currentFov - targetFov) < 0.1) {
+                currentFov = targetFov;
+            }
+            MinecraftClient.getInstance().options.getFov().setValue(currentFov);
+        }
     }
 }

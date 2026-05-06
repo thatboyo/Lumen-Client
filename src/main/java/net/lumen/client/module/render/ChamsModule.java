@@ -6,6 +6,7 @@ import net.lumen.client.module.Module;
 import net.lumen.client.setting.BooleanSetting;
 import net.lumen.client.setting.ColorSetting;
 import net.lumen.client.setting.EnumSetting;
+import com.mojang.blaze3d.systems.RenderSystem;
 
 public class ChamsModule extends Module {
     public enum ChamMode {
@@ -33,6 +34,23 @@ public class ChamsModule extends Module {
     }
 
     private void onRender3D(EventRender3D event) {
-        // override model rendering color.
+        // Note: Full chams implementation requires mixin on EntityRenderer to override model colors
+        // For now, this is a placeholder. Actual implementation would modify vertex colors during entity rendering.
+
+        int col = color.getValue();
+        float r = ((col >> 16) & 0xFF) / 255.0f;
+        float g = ((col >> 8) & 0xFF) / 255.0f;
+        float b = (col & 0xFF) / 255.0f;
+        float a = ((col >> 24) & 0xFF) / 255.0f;
+
+        if (mode.getValue() == ChamMode.FLAT) {
+            RenderSystem.setShaderColor(r, g, b, a);
+        } else if (mode.getValue() == ChamMode.GLOW) {
+            RenderSystem.setShaderColor(r, g, b, a);
+            // Additional glow effect would require shader modification
+        }
+
+        // Reset after render
+        RenderSystem.setShaderColor(1.0f, 1.0f, 1.0f, 1.0f);
     }
 }
