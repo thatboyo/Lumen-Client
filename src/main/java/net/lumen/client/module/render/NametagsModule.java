@@ -5,14 +5,21 @@ import net.lumen.client.module.Category;
 import net.lumen.client.module.Module;
 import net.lumen.client.setting.BooleanSetting;
 import net.lumen.client.setting.SliderSetting;
+import net.lumen.client.theme.LumenTheme;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.font.TextRenderer;
+import net.minecraft.client.render.BufferBuilder;
+import net.minecraft.client.render.BufferRenderer;import net.minecraft.client.render.BufferRenderer;import net.minecraft.client.render.GameRenderer;
+import net.minecraft.client.render.Tessellator;
 import net.minecraft.client.render.VertexConsumerProvider;
+import net.minecraft.client.render.VertexFormat;
+import net.minecraft.client.render.VertexFormats;
 import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.text.Text;
+import net.minecraft.util.Identifier;
 import net.minecraft.util.math.RotationAxis;
 import net.minecraft.util.math.Vec3d;
 import com.mojang.blaze3d.systems.RenderSystem;
@@ -87,14 +94,31 @@ public class NametagsModule extends Module {
 
         matrices.scale((float) -scale, (float) -scale, (float) scale);
 
-        // Center the text
-        float x = -textRenderer.getWidth(text) / 2.0f;
+        int textWidth = textRenderer.getWidth(text);
+        float x = -textWidth / 2.0f;
         float y = 0;
 
-        matrices.translate(x, y, 0);
+        Identifier watermark = LumenTheme.active.nametagWatermarkAsset();
+        int iconSize = 10;
+        if (entity instanceof PlayerEntity && watermark != null) {
+            RenderSystem.setShader(GameRenderer::getPositionTexColorProgram);
+            RenderSystem.setShaderTexture(0, watermark);
+            RenderSystem.enableBlend();
+            RenderSystem.defaultBlendFunc();
+            BufferBuilder buffer = Tessellator.getInstance().begin(VertexFormat.DrawMode.QUADS, VertexFormats.POSITION_TEXTURE);
+            float iconX = x - iconSize - 2;
+            float iconY = y - iconSize / 2;
+            buffer.vertex(matrices.peek().getPositionMatrix(), iconX, iconY + iconSize, 0).texture(0, 1).endVertex();
+            buffer.vertex(matrices.peek().getPositionMatrix(), iconX + iconSize, iconY + iconSize, 0).texture(1, 1).endVertex();
+            buffer.vertex(matrices.peek().getPositionMatrix(), iconX + iconSize, iconY, 0).texture(1, 0).endVertex();
+            buffer.vertex(matrices.peek().getPositionMatrix(), iconX, iconY, 0).texture(0, 0).endVertex();
+            BufferRenderer.drawWithGlobalProgram(buffer.end());
+            RenderSystem.disableBlend();
+            x -= (iconSize + 4);
+        }
 
-        // Render background or just text
-        textRenderer.draw(text, 0, 0, 0xFFFFFF, false, matrices.peek().getPositionMatrix(), (VertexConsumerProvider.Immediate) MinecraftClient.getInstance().getBufferBuilders().getEntityVertexConsumers(), TextRenderer.TextLayerType.NORMAL, 0, 15728880);
+        matrices.translate(x, y, 0);
+        textRenderer.draw(text, 0, 0, 0xFFFFFFFF, false, matrices.peek().getPositionMatrix(), (VertexConsumerProvider.Immediate) MinecraftClient.getInstance().getBufferBuilders().getEntityVertexConsumers(), TextRenderer.TextLayerType.NORMAL, 0, 15728880);
 
         matrices.pop();
     }

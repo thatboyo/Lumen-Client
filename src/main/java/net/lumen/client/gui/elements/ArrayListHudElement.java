@@ -4,7 +4,7 @@ import net.lumen.client.LumenClient;
 import net.lumen.client.hud.HudElement;
 import net.lumen.client.module.Module;
 import net.lumen.client.module.ModuleManager;
-import net.lumen.client.theme.LumenTheme;
+import net.lumen.client.theme.LumenTheme;import net.minecraft.client.MinecraftClient;import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.gui.DrawContext;
 
 public class ArrayListHudElement extends HudElement {
@@ -21,7 +21,7 @@ public class ArrayListHudElement extends HudElement {
         float currentY = y;
         for (Module module : manager.getEnabled()) {
             int textColor = LumenTheme.active.accent;
-            context.drawTextWithShadow(context.textRenderer, module.getName(), x, currentY, textColor);
+            context.drawTextWithShadow(MinecraftClient.getInstance().textRenderer, module.getName(), (int)x, (int)currentY, textColor);
             currentY += 10 * scale;
         }
     }

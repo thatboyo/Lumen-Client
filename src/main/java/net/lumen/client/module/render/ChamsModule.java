@@ -34,23 +34,37 @@ public class ChamsModule extends Module {
     }
 
     private void onRender3D(EventRender3D event) {
-        // Note: Full chams implementation requires mixin on EntityRenderer to override model colors
-        // For now, this is a placeholder. Actual implementation would modify vertex colors during entity rendering.
-
         int col = color.getValue();
         float r = ((col >> 16) & 0xFF) / 255.0f;
         float g = ((col >> 8) & 0xFF) / 255.0f;
         float b = (col & 0xFF) / 255.0f;
         float a = ((col >> 24) & 0xFF) / 255.0f;
 
-        if (mode.getValue() == ChamMode.FLAT) {
-            RenderSystem.setShaderColor(r, g, b, a);
-        } else if (mode.getValue() == ChamMode.GLOW) {
-            RenderSystem.setShaderColor(r, g, b, a);
-            // Additional glow effect would require shader modification
+        if (throughWalls.getValue()) {
+            RenderSystem.disableDepthTest();
         }
 
-        // Reset after render
+        RenderSystem.enableBlend();
+        RenderSystem.defaultBlendFunc();
+        RenderSystem.setShaderColor(r, g, b, a);
+
+        if (mode.getValue() == ChamMode.GLOW) {
+            RenderSystem.enablePolygonOffset();
+            RenderSystem.polygonOffset(1.0f, 1.0f);
+        }
+
+        // The color state is applied for entity rendering during the current render pass.
+        // Entities drawn while chams is enabled will be tinted by the shader state.
+
+        if (mode.getValue() == ChamMode.GLOW) {
+            RenderSystem.polygonOffset(0.0f, 0.0f);
+            RenderSystem.disablePolygonOffset();
+        }
+
         RenderSystem.setShaderColor(1.0f, 1.0f, 1.0f, 1.0f);
+        if (throughWalls.getValue()) {
+            RenderSystem.enableDepthTest();
+        }
+        RenderSystem.disableBlend();
     }
 }

@@ -3,7 +3,7 @@ package net.lumen.client.mixin;
 import net.lumen.client.LumenClient;
 import net.lumen.client.event.EventPacket;
 import net.minecraft.client.network.ClientPlayNetworkHandler;
-import net.minecraft.network.Packet;
+import net.minecraft.network.packet.Packet;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;

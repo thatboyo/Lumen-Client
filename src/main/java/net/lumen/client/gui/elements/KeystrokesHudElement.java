@@ -27,9 +27,9 @@ public class KeystrokesHudElement extends HudElement {
         boolean back = InputUtil.isKeyPressed(client.getWindow().getHandle(), InputUtil.fromKeyCode(GLFW.GLFW_KEY_S, 0).getCode());
         boolean right = InputUtil.isKeyPressed(client.getWindow().getHandle(), InputUtil.fromKeyCode(GLFW.GLFW_KEY_D, 0).getCode());
 
-        context.drawTextWithShadow(context.textRenderer, "W", x + 14, y, forward ? activeColor : inactiveColor);
-        context.drawTextWithShadow(context.textRenderer, "A", x, y + 12, left ? activeColor : inactiveColor);
-        context.drawTextWithShadow(context.textRenderer, "S", x + 14, y + 12, back ? activeColor : inactiveColor);
-        context.drawTextWithShadow(context.textRenderer, "D", x + 28, y + 12, right ? activeColor : inactiveColor);
+        context.drawTextWithShadow(MinecraftClient.getInstance().textRenderer, "W", (int)x + 14, (int)y, forward ? activeColor : inactiveColor);
+        context.drawTextWithShadow(MinecraftClient.getInstance().textRenderer, "A", (int)x, (int)y + 12, left ? activeColor : inactiveColor);
+        context.drawTextWithShadow(MinecraftClient.getInstance().textRenderer, "S", (int)x + 14, (int)y + 12, back ? activeColor : inactiveColor);
+        context.drawTextWithShadow(MinecraftClient.getInstance().textRenderer, "D", (int)x + 28, (int)y + 12, right ? activeColor : inactiveColor);
     }
 }

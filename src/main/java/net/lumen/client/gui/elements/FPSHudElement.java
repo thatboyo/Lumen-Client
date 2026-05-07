@@ -17,6 +17,6 @@ public class FPSHudElement extends HudElement {
             return;
         }
         String fps = "FPS: " + client.getCurrentFps();
-        context.drawTextWithShadow(context.textRenderer, fps, x, y, LumenTheme.active.accent);
+        context.drawTextWithShadow(MinecraftClient.getInstance().textRenderer, fps, (int)x, (int)y, LumenTheme.active.accent);
     }
 }

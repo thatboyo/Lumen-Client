@@ -1,6 +1,6 @@
 package net.lumen.client.event;
 
-import net.minecraft.network.Packet;
+import net.minecraft.network.packet.Packet;
 
 public class EventPacket {
     public final Packet<?> packet;
