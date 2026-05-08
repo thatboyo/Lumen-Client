@@ -90,7 +90,6 @@ public class ModuleManager {
         modules.add(new ClockModule());
         modules.add(new PingDisplayModule());
         modules.add(new CPSDisplayModule());
-        modules.add(new PotCounterModule());
         modules.add(new HitboxDisplayModule());
         modules.add(new FullBrightModule());
         modules.add(new ZoomModule());

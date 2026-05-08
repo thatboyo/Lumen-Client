@@ -62,8 +62,8 @@ public class TracersModule extends Module {
                 float a = ((col >> 24) & 0xFF) / 255.0f;
 
                 // Line from camera to entity
-                bufferBuilder.vertex(event.matrices.peek().getPositionMatrix(), 0.0f, 0.0f, 0.0f).color(r, g, b, a).endVertex();
-                bufferBuilder.vertex(event.matrices.peek().getPositionMatrix(), (float)(entityPos.x - cameraPos.x), (float)(entityPos.y - cameraPos.y), (float)(entityPos.z - cameraPos.z)).color(r, g, b, a).endVertex();
+                bufferBuilder.vertex(0.0f, 0.0f, 0.0f, col, 0.0f, 0.0f, 0, 0, 0.0f, 0.0f, 0.0f);
+                bufferBuilder.vertex((float)(entityPos.x - cameraPos.x), (float)(entityPos.y - cameraPos.y), (float)(entityPos.z - cameraPos.z), col, 0.0f, 0.0f, 0, 0, 0.0f, 0.0f, 0.0f);
             }
         }
 

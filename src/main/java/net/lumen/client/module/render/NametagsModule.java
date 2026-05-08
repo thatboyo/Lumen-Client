@@ -108,10 +108,10 @@ public class NametagsModule extends Module {
             BufferBuilder buffer = Tessellator.getInstance().begin(VertexFormat.DrawMode.QUADS, VertexFormats.POSITION_TEXTURE);
             float iconX = x - iconSize - 2;
             float iconY = y - iconSize / 2;
-            buffer.vertex(matrices.peek().getPositionMatrix(), iconX, iconY + iconSize, 0).texture(0, 1).endVertex();
-            buffer.vertex(matrices.peek().getPositionMatrix(), iconX + iconSize, iconY + iconSize, 0).texture(1, 1).endVertex();
-            buffer.vertex(matrices.peek().getPositionMatrix(), iconX + iconSize, iconY, 0).texture(1, 0).endVertex();
-            buffer.vertex(matrices.peek().getPositionMatrix(), iconX, iconY, 0).texture(0, 0).endVertex();
+            buffer.vertex(iconX, iconY + iconSize, 0, 0xFFFFFFFF, 0.0f, 1.0f, 0, 0, 0.0f, 0.0f, 0.0f);
+            buffer.vertex(iconX + iconSize, iconY + iconSize, 0, 0xFFFFFFFF, 1.0f, 1.0f, 0, 0, 0.0f, 0.0f, 0.0f);
+            buffer.vertex(iconX + iconSize, iconY, 0, 0xFFFFFFFF, 1.0f, 0.0f, 0, 0, 0.0f, 0.0f, 0.0f);
+            buffer.vertex(iconX, iconY, 0, 0xFFFFFFFF, 0.0f, 0.0f, 0, 0, 0.0f, 0.0f, 0.0f);
             BufferRenderer.drawWithGlobalProgram(buffer.end());
             RenderSystem.disableBlend();
             x -= (iconSize + 4);

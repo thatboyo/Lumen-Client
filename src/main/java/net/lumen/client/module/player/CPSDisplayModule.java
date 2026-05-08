@@ -27,7 +27,7 @@ public class CPSDisplayModule extends Module {
 
     private void onRender2D(EventRender2D event) {
         DrawContext context = event.drawContext;
-        if (!enabled) return;
+        if (!isEnabled()) return;
 
         // Update CPS every 1 second by checking mouse clicks
         long currentTime = System.currentTimeMillis();

@@ -40,7 +40,7 @@ public class ZoomModule extends Module {
     @Override
     protected void onDisable() {
         MinecraftClient client = MinecraftClient.getInstance();
-        client.options.getFov().setValue(defaultFov);
+        client.options.getFov().setValue((int) defaultFov);
     }
 
     private void onKey(EventKey event) {
@@ -56,7 +56,7 @@ public class ZoomModule extends Module {
             if (Math.abs(currentFov - targetFov) < 0.1) {
                 currentFov = targetFov;
             }
-            MinecraftClient.getInstance().options.getFov().setValue(currentFov);
+            MinecraftClient.getInstance().options.getFov().setValue((int) currentFov);
         }
     }
 }

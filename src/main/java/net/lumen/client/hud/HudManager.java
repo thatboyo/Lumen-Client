@@ -8,6 +8,7 @@ import net.lumen.client.gui.elements.CoordinatesHudElement;
 import net.lumen.client.gui.elements.FPSHudElement;
 import net.lumen.client.gui.elements.KeystrokesHudElement;
 import net.lumen.client.gui.elements.WatermarkHudElement;
+import net.lumen.client.module.player.PotCounterModule;
 import net.minecraft.client.gui.DrawContext;
 
 import java.util.ArrayList;
@@ -23,6 +24,7 @@ public class HudManager {
         hudElements.add(new CoordinatesHudElement(10, 100, 1.0f));
         hudElements.add(new FPSHudElement(10, 110, 1.0f));
         hudElements.add(new KeystrokesHudElement(10, 130, 1.0f));
+        hudElements.add(new PotCounterModule(10, 150, 1.0f));
         LumenClient.getEventBus().subscribe(EventRender2D.class, this::onRender2D);
     }
 

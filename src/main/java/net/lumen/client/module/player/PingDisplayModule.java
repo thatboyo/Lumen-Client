@@ -23,12 +23,15 @@ public class PingDisplayModule extends Module {
 
     private void onRender2D(EventRender2D event) {
         DrawContext context = event.drawContext;
-        if (!enabled) return;
+        if (!isEnabled()) return;
 
         MinecraftClient client = MinecraftClient.getInstance();
-        if (client.getNetworkHandler() == null) return;
+        if (client.getNetworkHandler() == null || client.player == null) return;
 
-        int ping = client.getNetworkHandler().getLatency();
+        var entry = client.getNetworkHandler().getPlayerListEntry(client.player.getUuid());
+        if (entry == null) return;
+
+        int ping = entry.getLatency();
         String pingStr = "Ping: " + ping + "ms";
 
         // Color based on ping (green good, red bad)

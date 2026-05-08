@@ -31,7 +31,6 @@ public class HitboxDisplayModule extends Module {
 
         RenderSystem.enableBlend();
         RenderSystem.defaultBlendFunc();
-        RenderSystem.disableTexture();
         RenderSystem.setShader(GameRenderer::getPositionColorProgram);
 
         renderHitbox(client.player.getBoundingBox(), event, 0xFFFFFF00);
@@ -42,7 +41,6 @@ public class HitboxDisplayModule extends Module {
             renderHitbox(entity.getBoundingBox(), event, 0xFF00FFFF);
         }
 
-        RenderSystem.enableTexture();
         RenderSystem.disableBlend();
     }
 
@@ -60,7 +58,7 @@ public class HitboxDisplayModule extends Module {
         float b = (color & 0xFF) / 255.0f;
         float a = ((color >> 24) & 0xFF) / 255.0f;
 
-        BufferBuilder buffer = Tessellator.begin(VertexFormat.DrawMode.DEBUG_LINES, VertexFormats.POSITION_COLOR);
+        BufferBuilder buffer = Tessellator.getInstance().begin(VertexFormat.DrawMode.DEBUG_LINES, VertexFormats.POSITION_COLOR);
 
         addLine(buffer, event, minX, minY, minZ, maxX, minY, minZ, r, g, b, a);
         addLine(buffer, event, maxX, minY, minZ, maxX, maxY, minZ, r, g, b, a);
@@ -81,8 +79,9 @@ public class HitboxDisplayModule extends Module {
     }
 
     private void addLine(BufferBuilder buffer, EventRender3D event, double x1, double y1, double z1, double x2, double y2, double z2, float r, float g, float b, float a) {
-        buffer.vertex(event.matrices.peek().getPositionMatrix(), (float)x1, (float)y1, (float)z1).color(r, g, b, a).next();
-        buffer.vertex(event.matrices.peek().getPositionMatrix(), (float)x2, (float)y2, (float)z2).color(r, g, b, a).next();
+        int color = ((int)(a * 255) << 24) | ((int)(r * 255) << 16) | ((int)(g * 255) << 8) | (int)(b * 255);
+        buffer.vertex((float)x1, (float)y1, (float)z1, color, 0.0f, 0.0f, 0, 0, 0.0f, 0.0f, 0.0f);
+        buffer.vertex((float)x2, (float)y2, (float)z2, color, 0.0f, 0.0f, 0, 0, 0.0f, 0.0f, 0.0f);
     }
 }
 

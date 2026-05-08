@@ -1,5 +1,6 @@
 package net.lumen.client.module.player;
 
+import net.lumen.client.hud.HudElement;
 import net.lumen.client.theme.LumenTheme;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.gui.DrawContext;

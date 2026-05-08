@@ -2,6 +2,7 @@ package net.lumen.client.module.player;
 
 import net.lumen.client.hud.HudElement;
 import net.lumen.client.theme.LumenTheme;
+import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.gui.DrawContext;
 import net.minecraft.item.ItemStack;
 
@@ -22,9 +23,9 @@ public class ArmorDisplayModule extends HudElement {
 
         // Render armor slots horizontally
         ItemStack helmet = MinecraftClient.getInstance().player.getInventory().armor.get(3);
-        ItemStack chestplate = context.getMinecraftClient().player.getInventory().armor.get(2);
-        ItemStack leggings = context.getMinecraftClient().player.getInventory().armor.get(1);
-        ItemStack boots = context.getMinecraftClient().player.getInventory().armor.get(0);
+        ItemStack chestplate = MinecraftClient.getInstance().player.getInventory().armor.get(2);
+        ItemStack leggings = MinecraftClient.getInstance().player.getInventory().armor.get(1);
+        ItemStack boots = MinecraftClient.getInstance().player.getInventory().armor.get(0);
 
         ItemStack[] armorItems = {helmet, chestplate, leggings, boots};
 
