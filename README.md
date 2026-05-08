@@ -1,6 +1,5 @@
 # Lumen-Client
 A sleek modern Minecraft Ghost Client designed for Fabric 1.21.x
-
 ==================================================================
  (NOTE!) this is not finished yet, so it might be buggy
 Overview   
@@ -8,6 +7,7 @@ Overview
 Lumen Client is a lightweight, modular Fabric client created for anticheat testing on private servers.
 The client features minimalistic visuals, hidden mechanics, full modularization and a ghost style theme.
 
+ 
  Built with Fabric 1.21.x + Java 21
  Modular architecture with an event-based system
  Fully themeable user interface (Ghost/Cyber/Hacker)
@@ -16,6 +16,7 @@ The client features minimalistic visuals, hidden mechanics, full modularization 
  Installation
  Install Fabric Loader (1.21.x)
  Install Fabric API
+ 
 ===================================================
 to build the client:
 run ./gradlew build
