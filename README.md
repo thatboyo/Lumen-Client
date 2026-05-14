@@ -20,6 +20,7 @@ The client features minimalistic visuals, hidden mechanics, full modularization 
 ===================================================
 to build the client:
 run ./gradlew build
+
 ------------------------------------
 
 Drop lumen-client.jar into:
@@ -29,10 +30,10 @@ Start Minecraft,
 
 -----------------------
 Default Keybinds are:
-RSHIFT	for ClickGUI
+RSHIFT	for ClickGUI,
 P	for ClickHUD (hide HUD + render modules),
 also,
-custom	module keybinds are customizable
+custom	module keybinds are customizable,
 
 -------------------------------------
 LumenClient
